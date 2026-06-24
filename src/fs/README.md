@@ -1,4 +1,4 @@
-# MythWeaver File System
+# Neoversum File System
 
 Per-campaign file organization. Each campaign is a self-contained directory of files.
 
@@ -30,9 +30,9 @@ campaign/{campaignId}/
 ## localStorage Keys
 
 ```
-mw_shared_{campaignId}       -> shared.json
-mw_player_{campaignId}_{playerId} -> players/{playerId}.json
-mw_npc_{campaignId}_{npcId}  -> npcs/{npcId}.json
+nv_shared_{campaignId}       -> shared.json
+nv_player_{campaignId}_{playerId} -> players/{playerId}.json
+nv_npc_{campaignId}_{npcId}  -> npcs/{npcId}.json
 ```
 
 ## Communication Scenarios

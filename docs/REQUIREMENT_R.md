@@ -1,4 +1,4 @@
-# MythWeaver TRPG — Requirements by Design Domain
+# Neoversum TRPG — Requirements by Design Domain
 
 Grouped by the area of the system each requirement targets. Derived directly from user statements.
 

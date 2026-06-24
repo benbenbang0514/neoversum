@@ -1,4 +1,4 @@
-// MythWeaver File System Types
+// Neoversum File System Types
 // Maps REQUIREMENT_R.md + ARCHITECTURE.md data architecture requirements
 
 // ─── Core Identifiers ───
@@ -293,11 +293,11 @@ export interface AiTrigger {
 // ─── Storage Keys (localStorage) ───
 
 export const storageKey = {
-  shared: (campaignId: CampaignId) => `mw_shared_${campaignId}`,
-  player: (campaignId: CampaignId, playerId: PlayerId) => `mw_player_${campaignId}_${playerId}`,
-  npc: (campaignId: CampaignId, npcId: NpcId) => `mw_npc_${campaignId}_${npcId}`,
-  campaigns: () => 'mw_campaigns_list',
-  llmLogs: () => 'mw_llm_logs',
+  shared: (campaignId: CampaignId) => `nv_shared_${campaignId}`,
+  player: (campaignId: CampaignId, playerId: PlayerId) => `nv_player_${campaignId}_${playerId}`,
+  npc: (campaignId: CampaignId, npcId: NpcId) => `nv_npc_${campaignId}_${npcId}`,
+  campaigns: () => 'nv_campaigns_list',
+  llmLogs: () => 'nv_llm_logs',
 };
 
 // ─── File Operations Interface ───

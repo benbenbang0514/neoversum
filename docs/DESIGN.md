@@ -1,4 +1,4 @@
-# MythWeaver — Frontend UI Design
+# Neoversum — Frontend UI Design
 
 Redesign of all frontend components. Layout, navigation, and state management.
 

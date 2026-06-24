@@ -1,4 +1,4 @@
-# MythWeaver Multiplayer Architecture
+# Neoversum Multiplayer Architecture
 
 Mirrors the 7 design domains from REQUIREMENT_R.md. Each section maps requirements to technical design. Anything not explicitly stated by the user is marked `[ASSISTANT INFERENCE]`.
 

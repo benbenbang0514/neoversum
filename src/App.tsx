@@ -263,14 +263,14 @@ export default function App() {
 
   // Load from localStorage
   useEffect(() => {
-    const c = ls.get('mw_campaigns') || [];
+    const c = ls.get('nv_campaigns') || [];
     setCampaigns(c);
     if (c[0]) setActiveId(c[0].id);
-    const logs = ls.get('mw_llm_logs') || [];
+    const logs = ls.get('nv_llm_logs') || [];
     setLlmLogs(logs);
   }, []);
 
-  useEffect(() => { ls.set('mw_campaigns', campaigns); }, [campaigns]);
+  useEffect(() => { ls.set('nv_campaigns', campaigns); }, [campaigns]);
 
   const active = useMemo(() => campaigns.find((c) => c.id === activeId) ?? campaigns[0], [campaigns, activeId]);
 
@@ -301,7 +301,7 @@ export default function App() {
       promptLength: systemPrompt.length + userPrompt.length,
       responsePreview: '',
     };
-    setLlmLogs((prev) => { const next = [...prev, logEntry]; ls.set('mw_llm_logs', next); return next; });
+    setLlmLogs((prev) => { const next = [...prev, logEntry]; ls.set('nv_llm_logs', next); return next; });
     const response = await fetch(`${API_URL}/chat/completions`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${API_KEY}` },
@@ -320,7 +320,7 @@ export default function App() {
     const text = data.choices?.[0]?.message?.content || '';
     setLlmLogs((prev) => {
       const next = prev.map((l, i) => i === prev.length - 1 ? { ...l, status: 'success' as const, responsePreview: text.slice(0, 200) } : l);
-      ls.set('mw_llm_logs', next);
+      ls.set('nv_llm_logs', next);
       return next;
     });
     return text;
@@ -478,7 +478,7 @@ Now narrate the final outcome. Describe what happens based on this roll. Be conc
     const blob = new Blob([JSON.stringify({ campaigns }, null, 2)], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
-    a.href = url; a.download = `mythweaver-${Date.now()}.json`; a.click();
+    a.href = url; a.download = `neoversum-${Date.now()}.json`; a.click();
     URL.revokeObjectURL(url);
     setStatus('Exported.');
   };
@@ -520,7 +520,7 @@ Now narrate the final outcome. Describe what happens based on this roll. Be conc
       promptLength: promptPreview.length,
       responsePreview: '',
     };
-    setLlmLogs((prev) => { const next = [...prev, logEntry]; ls.set('mw_llm_logs', next); return next; });
+    setLlmLogs((prev) => { const next = [...prev, logEntry]; ls.set('nv_llm_logs', next); return next; });
     setIsGenerating(true);
     setError('');
     setStatus('Generating campaign with LLM...');
@@ -548,7 +548,7 @@ Now narrate the final outcome. Describe what happens based on this roll. Be conc
       setStatus('Campaign generated! Review and confirm.');
       setLlmLogs((prev) => {
         const next = prev.map((l, i) => i === prev.length - 1 ? { ...l, status: 'success' as const, responsePreview: text.slice(0, 200) } : l);
-        ls.set('mw_llm_logs', next);
+        ls.set('nv_llm_logs', next);
         return next;
       });
     } catch (err) {
@@ -557,7 +557,7 @@ Now narrate the final outcome. Describe what happens based on this roll. Be conc
       setStatus('Generation failed.');
       setLlmLogs((prev) => {
         const next = prev.map((l, i) => i === prev.length - 1 ? { ...l, status: 'error' as const, errorMessage: msg } : l);
-        ls.set('mw_llm_logs', next);
+        ls.set('nv_llm_logs', next);
         return next;
       });
     } finally {
@@ -876,7 +876,7 @@ Now narrate the final outcome. Describe what happens based on this roll. Be conc
   return (
     <div className="app-shell">
       <header className="app-header">
-        <div className="app-brand"><h1>MythWeaver</h1></div>
+        <div className="app-brand"><h1>Neoversum</h1></div>
       </header>
       <div className="app-body">
         <aside className="app-sidebar">
